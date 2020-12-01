@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
@@ -28,8 +28,10 @@ def hello_world():
 # }
 @app.route("/calculator", methods=["POST"])
 def calculator():
-    data = request.json
-    return "To be implemented"
+    data = request.get_json()
+    device = data["devices"][0]["model"]
+    app_name = data["video"]["app_name"]
+    return "Received body:\nComputer: {}\nConferencing app: {}".format(device, app_name)
 
 
 if __name__ == '__main__':
