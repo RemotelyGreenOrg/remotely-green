@@ -1,10 +1,10 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    return 'Remotely Green'
+    return render_template("index.html")
 
 # POST /calculator
 # The body must contain JSON data with the information required for the calculations
@@ -26,12 +26,15 @@ def hello_world():
 #     'avoided_transport_mode': 'train' // enum bus, train, plane
 #   }
 # }
-@app.route("/calculator", methods=["POST"])
+@app.route("/calculator", methods=["GET", "POST"])
 def calculator():
-    data = request.get_json()
-    device = data["devices"][0]["model"]
-    app_name = data["video"]["app_name"]
-    return "Received body:\nComputer: {}\nConferencing app: {}".format(device, app_name)
+    if request.method == "POST":
+        data = request.get_json()
+        device = data["devices"][0]["model"]
+        app_name = data["video"]["app_name"]
+        return "Received body:\nComputer: {}\nConferencing app: {}".format(device, app_name)
+    else:
+        return "To be implemented"
 
 
 if __name__ == '__main__':
