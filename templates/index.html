@@ -3,8 +3,97 @@
     <head>
         <title>Remotely Green</title>
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='index.css') }}>
+		
     </head>
     <body>
         <h1>Remotely Green API</h1>
+		<div class="input">
+			<form name="remote">
+				<form name ="device">
+					<p>Type of device 
+						<select name="typeDevice" size=1 id="typeDevice">
+							<option value="laptop" id="laptop">laptop</option>
+							<option value="persComputer" id="persComputer">personal computer</option>
+							<option value="highCODEC" id="highCODEC">high CODEC</option>
+							<option value="lowCODEC" id="lowCODEC">low CODEC</option>
+							<option value="projector" id="projector">projector</option>
+							<option value="router" id="router">router</option>
+							<option value="camera" id="camera">camera</option>
+							<option value="speaker" id="speaker">speaker</option>
+							<option value="micro" id="micro">microphone</option>
+						</select>
+					</p>
+					
+					<p>Model<input="text" name="model" id="model" placeholder="model"></p>
+					<p>Size of screen 
+						<input type="number" name="inchL" id="inchL" placeholder="inch">
+						<input type="number" name="inchl" id="inchl" placeholder="inch">
+					</p>
+				
+					<p>Format of screen
+						<input type="number" name="long" id="long" placeholder="long">/
+						<input type="number" name="large" id="large" placeholder="large">
+					</p>
+				
+					<p>Date of purchase <input type="date" id="date" name="datePurchase"></p>
+				</form>
+				
+				<form name = "appName">
+					<p>Name of the app<input type="text" name="app_name" id="app_name" placeholder="App name"><p>
+				<p>Duration call<input type="time" step="1" name="duration" id="duration"></p>
+				<p>Location when remote meeting
+				<input type="text" name="nbAddress" id="nbAddress" placeholder="Nb">
+				<input type="text" name="street" id="street" placeholder="Street">
+				<input type="text" name="postalCode" id="postalCode" placeholder="Postal Code">
+				<input type="text" name="city" id="city" placeholder="City">
+				<input type="text" name="country" id="country" placeholder="Country">
+				</p>
+				</form>
+				
+				<p><button type="submit" name="sendRemote" id="sendRemote">Submit</button></p>
+			</form>
+			
+			
+			<form name ="inPerson">
+				<p>Start Location
+					<input type="text" name="nbAddressStart" id="nbAddressStart" placeholder="Nb">
+					<input type="text" name="streetStart" id="streetStart" placeholder="Street">
+					<input type="text" name="postalCodeStart" id="postalCodeStart" placeholder="Postal Code">
+					<input type="text" name="cityStart" id="cityStart" placeholder="City">
+					<input type="text" name="countryStart" id="countryStart" placeholder="Country">
+				</p>
+			
+				<p>Destination Location
+					<input type="text" name="nbAddressDst" id="nbAddressDst" placeholder="Nb">
+					<input type="text" name="streetDst" id="streetDst" placeholder="Street">
+					<input type="text" name="postalCodeDst" id="postalCodeDst" placeholder="Postal Code">
+					<input type="text" name="cityDst" id="cityDst" placeholder="City">
+					<input type="text" name="countryDst" id="countryDst" placeholder="Country">
+				</p>
+			
+				<p>Transport used
+					<select name="transport" size=1 id="transport">
+							<option value="train" id="train">train</option>
+							<option value="" id="car">car</option>
+							<option value="plane" id="plane">plane</option>
+							<option value="boat" id="boat">boat</option>
+							<option value="bus" id="bus">bus</option>
+							<option value="tram" id="tram">tram</option>
+							<option value="bicycle" id="bicycle">bicycle</option>
+							<option value="moto" id="moto">moto</option>
+							<option value="metro" id="metro">metro</option>
+							<option value="foot" id="foot">by foot</option>
+							<option value="eBike" id="eBike">electric bike</option>
+							<option value="eScooter" id="eScooter">eletric scooter</option>
+					</select>
+				<p><button type="submit" name="sendInPerson" id="sendInPerson">Submit</button></p>
+			</form>
+		</div>
+		
+		<div class="output">
+			<p>Consumption category <span class="consumptionCat">consumption category</span></p>
+			
+			<p>Total emission of CO2 [kg/h/user] <span class="totalEmission">total emission CO2</span></p>
+		</div>	
     </body>
 </html>
