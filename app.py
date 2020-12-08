@@ -34,7 +34,7 @@ def calculator():
         app_name = data["video"]["app_name"]
         return "Received body:\nComputer: {}\nConferencing app: {}".format(device, app_name)
     else:
-        return "To be implemented"
+        return render_template("remotelyGreen.html")
 
 
 if __name__ == '__main__':
