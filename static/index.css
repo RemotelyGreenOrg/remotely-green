@@ -16,8 +16,9 @@ h2 {
     font-family: "Helvetica Neue";
     font-size: 30px;
     display: inline-block;
-    border: 2px solid;
-	padding: 2px 15px;    
+    border: 2px solid #666666;
+	padding: 2px 15px; 
+	background-color: #bfbfbf;   
 }
 
 h3 {
