@@ -1,4 +1,86 @@
-h1 {
-    font-weight: 200;
-    font-family: "Helvetica Neue";
+
+body{
+    background: #dfdfdf
 }
+
+
+h1 {
+    font-weight: 500;
+    font-family: "Helvetica Neue";
+    font-size: 50px;
+    text-align: center;
+}
+
+h2 {
+    font-weight: 100;
+    font-family: "Helvetica Neue";
+    font-size: 30px;
+    display: inline-block;
+    border: 2px solid;
+	padding: 2px 15px;    
+}
+
+h3 {
+    font-weight: 70;
+    font-family: "Helvetica Neue";
+    font-size: 24px;
+    display: inline-block;
+    border: : 5px solid;
+}
+
+p {
+	font-size: 18px;
+}
+
+select {
+	padding: 10px;
+	margin: 0 10px;
+	border: 2px solid #6a6a6a;
+	box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+	border-radius:10px;
+
+}
+
+input {
+	padding: 10px;
+	margin: 0 10px;
+	border: 2px solid #6a6a6a;
+	box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+	border-radius:10px;
+
+}
+
+#app, #device {
+	border: 1px dashed;
+	padding: 0 17px;
+}
+
+button {
+
+  /* remove default behavior */
+  appearance:none;
+  -webkit-appearance:none;
+
+  /* ccustom style */
+  margin-top: 30px;
+  padding:10px;
+  border:none;
+  background-color:#0077b3;
+  color:#fff;
+  font-weight:600;
+  border-radius:5px;
+  width:20%;
+
+}
+
+.input{
+	margin: 0 40px;
+}
+
+.output{
+	margin: 0 40px;
+}
+
+
+
+
