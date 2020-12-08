@@ -1,12 +1,10 @@
 
 body{
-    background: #dfdfdf
+    background: #dfdfdf;
 }
-
 
 h1 {
     font-weight: 500;
-    font-family: "Helvetica Neue";
     font-size: 50px;
     text-align: center;
 }
@@ -22,11 +20,11 @@ h2 {
 }
 
 h3 {
-    font-weight: 70;
+    font-weight: 700;
     font-family: "Helvetica Neue";
     font-size: 24px;
     display: inline-block;
-    border: : 5px solid;
+    border: 5px solid;
 }
 
 p {
@@ -62,7 +60,7 @@ button {
   appearance:none;
   -webkit-appearance:none;
 
-  /* ccustom style */
+  /* custom style */
   margin-top: 30px;
   padding:10px;
   border:none;
