@@ -1,10 +1,10 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect, url_for
 
 app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    return render_template("index.html")
+    return redirect(url_for("calculator"))
 
 # POST /calculator
 # The body must contain JSON data with the information required for the calculations
