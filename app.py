@@ -6,36 +6,89 @@ app = Flask(__name__)
 def hello_world():
     return redirect(url_for("calculator"))
 
-# POST /calculator
-# The body must contain JSON data with the information required for the calculations
-# Example:
-# {
-#   'devices': [
-#     {
-#       'model': 'MacBook Pro',
-#       'bought_date': '2019-11-29T16:54:05+0000', // ISO8601 date format
-#     }
-#   ],
-#   'video': {
-#     'app_name': 'Zoom',
-#     'duration': 3600, // Time in seconds
-#   },
-#   'location': {
-#     'current': '46.011114 7.737755',
-#     'avoided': '46.197233 6.138377',
-#     'avoided_transport_mode': 'train' // enum bus, train, plane
-#   }
-# }
-@app.route("/calculator", methods=["GET", "POST"])
+@app.route("/calculator")
 def calculator():
-    if request.method == "POST":
-        data = request.get_json()
-        device = data["devices"][0]["model"]
-        app_name = data["video"]["app_name"]
-        return "Received body:\nComputer: {}\nConferencing app: {}".format(device, app_name)
-    else:
-        return render_template("remotelyGreen.html")
+    # Default parameters
+    data = {
+            "remote": {
+                "consumption": "Submit form!",
+                "total_emission_co2": "Submit form!"
+            },
+            "in_person": {
+                "consumption": "Submit form!",
+                "total_emission_co2": "Submit form!"
+            },
+            "difference": "Submit form!"
+        }
 
+    # Render template
+    return render_template("remotelyGreen.html", data=data)
+
+@app.route("/calculator/remote")
+def calculatorRemote():
+    # Get parameters
+    device = request.args.get("typeDevice")
+    device_model = request.args.get("model")
+    device_inch = request.args.get("inch")
+    device_long = request.args.get("long")
+    device_large = request.args.get("large")
+    device_date_purchase = request.args.get("datePurchase")
+    app_name = request.args.get("app_name")
+    duration = request.args.get("duration")
+    address_number = request.args.get("nbAddress")
+    address_street = request.args.get("street")
+    address_postcode = request.args.get("postalCode")
+    address_city = request.args.get("city")
+    address_country = request.args.get("country")
+
+    # Pass data to model
+    # FIXME: To be implemented
+    data = {
+            "remote": {
+                "consumption": "TBI: Consumption Category",
+                "total_emission_co2": "TBI: CO2 Total emissions"
+            },
+            "in_person": {
+                "consumption": "TBI: Consumption Category",
+                "total_emission_co2": "TBI: CO2 Total emissions"
+            },
+            "difference": "TBI: Difference CO2 emissions"
+        }
+
+    # Show template with data
+    return render_template("remotelyGreen.html", data=data)
+
+@app.route("/calculator/in-person")
+def calculatorInPerson():
+    # Get parameters
+    start_address_number = request.args.get("nbAddressStart")
+    start_address_street = request.args.get("streetStart")
+    start_address_postcode = request.args.get("postalCodeStart")
+    start_address_city = request.args.get("cityStart")
+    start_address_country = request.args.get("countryStart")
+    destination_address_number = request.args.get("nbAddressDst")
+    destination_address_street = request.args.get("streetDst")
+    destination_address_postcode = request.args.get("postalCodeDst")
+    destination_address_city = request.args.get("cityDst")
+    destination_address_country = request.args.get("countryDst")
+    transport = request.args.get("transport")
+
+    # Pass data to model
+    # FIXME: To be implemented
+    data = {
+            "remote": {
+                "consumption": "TBI: Consumption Category",
+                "total_emission_co2": "TBI: CO2 Total emissions"
+            },
+            "in_person": {
+                "consumption": "TBI: Consumption Category",
+                "total_emission_co2": "TBI: CO2 Total emissions"
+            },
+            "difference": "TBI: Difference CO2 emissions"
+        }
+
+    # Show template with data
+    return render_template("remotelyGreen.html", data=data)
 
 if __name__ == '__main__':
     app.run()
