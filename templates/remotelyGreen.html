@@ -8,9 +8,8 @@
     <body>
         <h1>Remotely Green API</h1>
 		<div class="input">
-			<form name="remote">
+			<form action="/calculator/remote" name="remote">
 				<p><h2>Remote meeting</h2></p>
-				<form name ="device" id="device">
 					<p><h3>Device</h3></p>
 					<p>Type of device 
 						<select name="typeDevice" size=1 id="typeDevice">
@@ -26,7 +25,7 @@
 						</select>
 					</p>
 					
-					<p>Model<input="text" name="model" id="model" placeholder="model"></p>
+					<p>Model<input type="text" name="model" id="model" placeholder="model"></p>
 					<p>Size of screen (diagonal) <input type="number" min="0" name="inch" id="inch" placeholder="inch"></p>
 				
 					<p>Format of screen 
@@ -35,9 +34,7 @@
 					</p>
 				
 					<p>Date of purchase <input type="date" id="date" name="datePurchase"></p>
-				</form>
-				
-				<form name = "appName" id="app">
+
 					<p><h3>App</h3></p>
 					<p>Name of the app <input type="text" name="app_name" id="app_name" placeholder="App name"><p>
 					<p>Duration call <input type="time" step="1" name="duration" id="duration"></p>
@@ -48,13 +45,12 @@
 						<input type="text" name="city" id="city" placeholder="City" size="15">
 						<input type="text" name="country" id="country" placeholder="Country">
 					</p>
-				</form>
 				
 				<p><button type="submit" name="sendRemote" id="sendRemote">Submit</button></p>
 			</form>
 			<br><hr>
 			
-			<form name ="inPerson">
+			<form action="/calculator/in-person" name="inPerson">
 				<p><h2>Meeting in person</h2></p>
 				<p>Start Location
 					<input type="text" name="nbAddressStart" id="nbAddressStart" placeholder="Nb" size="5">
@@ -96,20 +92,20 @@
 			<p><h2>Output</h2></p>
 			<p><h3>Remote meeting output</h3></p>
 			
-			<p>Consumption category : <span class="consumptionCatRemote"><b>consumption category</b></span></p>
+			<p>Consumption category : <span class="consumptionCatRemote"><b>{{data.remote.consumption}}</b></span></p>
 			
-			<p>Total emission of CO2 [kg/h/user] : <span class="totalEmissionRemote"><b>total CO2 emissions</b></span></p>
+			<p>Total emission of CO2 [kg/h/user] : <span class="totalEmissionRemote"><b>{{data.remote.total_emission_co2}}</b></span></p>
 			
 			<br>
 			<p><h3>In person meeting output</h3></p>
 			
-			<p>Consumption category in person meeting : <span class="consumptionCatInPers"><b>consumption category</b></span></p>
+			<p>Consumption category in person meeting : <span class="consumptionCatInPers"><b>{{data.in_person.consumption}}</b></span></p>
 			
-			<p>Total emission of CO2 due to travel[kg/h/user] : <span class="totalEmissionInPers"><b>total CO2 emissions due to travel</b></span></p>
+			<p>Total emission of CO2 due to travel[kg/h/user] : <span class="totalEmissionInPers"><b>{{data.in_person.total_emission_co2}}</b></span></p>
 			
 			<br>
 			<p><h3>Difference of CO2 emissions</h3></p>
-			<p>Difference between remote and in person meetings (in person - remote) : <span class="diffEmission"><b>difference CO2 emissions</b></span></p>
+			<p>Difference between remote and in person meetings (in person - remote) : <span class="diffEmission"><b>{{data.difference}}</b></span></p>
 		</div>	
     </body>
 </html>
