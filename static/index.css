@@ -48,8 +48,8 @@ input {
 
 }
 
-#app, #device {
-	border: 1px dashed;
+#app {
+	border-top: 1px dashed;
 	padding: 0 17px;
 }
 
