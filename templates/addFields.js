@@ -31,7 +31,23 @@ function moreApp() {
 	insertHere.parentNode.insertBefore(newFields,insertHere);
 }
 
+function moreDst() {
+	counterApp++;
+	let newFields = document.getElementById('inPersonMeeting').cloneNode(true);
+	newFields.id = '';
+	newFields.style.display = 'block';
+	let newField = newFields.childNodes;
+	for (let i=0;i<newField.length;i++) {
+		let theName = newField[i].name
+		if (theName)
+			newField[i].name = theName + counterApp;
+	}
+	let insertHere = document.getElementById('inPersonAdded');
+	insertHere.parentNode.insertBefore(newFields,insertHere);
+}
+
 window.onload = function(){
 	document.getElementById('moreDevice').onclick = moreDevice;
 	document.getElementById('moreApp').onclick = moreApp;
+	document.getElementById('moreDst').onclick = moreDst;
 }

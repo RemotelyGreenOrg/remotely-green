@@ -2,8 +2,9 @@
 <html>
     <head>
         <title>Remotely Green</title>
-        <!--<link rel="stylesheet" type="text/css" href={{ url_for('static', filename='index.css') }}>-->
+        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='index.css') }}>
 		<script type="text/javascript" src="addFields.js"></script>
+		<script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
 		
     </head>
     <body>
@@ -14,7 +15,7 @@
 					<legend><h2>Remote meeting</h2></legend>
 					
 					<div class="remoteMeetingDevices" id ="remoteMeetingDevices" style="display :none">
-						<br><input type="button" id="removeDeviceButton" value="Remove Device" onclick="this.parentNode.parentNode.removeChild(this.parentNode);">
+						<br><button class="removeDeviceButton" id="removeDeviceButton" value="Remove Device" onclick="this.parentNode.parentNode.removeChild(this.parentNode);"><i class="fas fa-minus"></i></button>
 						<fieldset>
 							<legend><h3>Device</h3></legend>
 							<p>Type of device 
@@ -49,12 +50,12 @@
 					</form>
 					
 					<div class="remoteMeetingApp" id="remoteMeetingApp" style="display : none">
-						<br><input type="button" id="removeAppButton" value="Remove App" onclick="this.parentNode.parentNode.removeChild(this.parentNode);">
+						<br><button id="removeAppButton" value="Remove App" onclick="this.parentNode.parentNode.removeChild(this.parentNode);"><i class="fas fa-minus"></i></button>
 						<fieldset>
 							<legend><h3>App</h3></legend>
 							<p>Name of the app <input type="text" name="app_name" id="app_name" placeholder="App name"><p>
 							<p>Duration call <input type="time" step="1" name="duration" id="duration"></p>
-							<p>Location when remote meeting 
+							<p>Location when remote meeting<br><br>
 								<input type="text" name="nbAddress" id="nbAddress" placeholder="Nb" size="5">
 								<input type="text" name="street" id="street" placeholder="Street" size="30">
 								<input type="text" name="postalCode" id="postalCode" placeholder="Postal Code" size="10">
@@ -77,7 +78,9 @@
 			<form action="/calculator/in-person" name="inPerson">
 				<fieldset>
 					<legend><h2>Meeting in person</h2></legend>
-					<p>Start Location
+					<div class="inPersonMeeting" id="inPersonMeeting" style="display : none">
+					<br><button id="removeinPersonButton" value="Remove Route" onclick="this.parentNode.parentNode.removeChild(this.parentNode);"><i class="fas fa-minus"></i></button>
+					<p>Start Location<br><br>
 						<input type="text" name="nbAddressStart" id="nbAddressStart" placeholder="Nb" size="5">
 						<input type="text" name="streetStart" id="streetStart" placeholder="Street" size="30">
 						<input type="text" name="postalCodeStart" id="postalCodeStart" placeholder="Postal Code" size="10">
@@ -85,7 +88,7 @@
 						<input type="text" name="countryStart" id="countryStart" placeholder="Country">
 					</p>
 					
-					<p>Destination Location
+					<p>Destination Location<br><br>
 						<input type="text" name="nbAddressDst" id="nbAddressDst" placeholder="Nb" size="5">
 						<input type="text" name="streetDst" id="streetDst" placeholder="Street" size="30">
 						<input type="text" name="postalCodeDst" id="postalCodeDst" placeholder="Postal Code" size="10">
@@ -108,6 +111,13 @@
 								<option value="eBike" id="eBike">electric bike</option>
 								<option value="eScooter" id="eScooter">eletric scooter</option>
 						</select>
+					</div>
+					
+					<form method="post" action="cgi-bin/show_params.cgi" id="inPersonAdd" name="inPersonAdd"> 
+						<span id ="inPersonAdded"></span>
+						<p><input type="button" id="moreDst" value="Add Route"><p>
+					</form>
+					
 					<p><button type="submit" name="sendInPerson" id="sendInPerson">Submit</button></p>
 				</fieldset>
 			</form>
