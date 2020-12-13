@@ -4,8 +4,6 @@
         <title>Remotely Green</title>
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/index.css') }}>
 		<script type="text/javascript" src={{ url_for('static', filename='js/addFields.js') }}></script>
-		<script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
-		
     </head>
     <body>
         <h1>Remotely Green API</h1>
@@ -14,12 +12,12 @@
 				<fieldset>
 					<legend><h2>Remote meeting</h2></legend>
 					
-					<div class="remoteMeetingDevices" id ="remoteMeetingDevices" style="display :none">
+					<div class="remoteMeetingDevices" id="remoteMeetingDevices" style="display :none">
 						<br><button class="removeDeviceButton" id="removeDeviceButton" value="Remove Device" onclick="this.parentNode.parentNode.removeChild(this.parentNode);"><i class="fas fa-minus"></i></button>
 						<fieldset>
 							<legend><h3>Device</h3></legend>
 							<p>Type of device 
-								<select name="typeDevice" size=1 id="typeDevice">
+								<select name="typeDevice" size=1 id="typeDeviceId">
 									<option value="laptop" id="laptop">laptop</option>
 									<option value="persComputer" id="persComputer">personal computer</option>
 									<option value="highCODEC" id="highCODEC">high CODEC</option>
@@ -115,7 +113,7 @@
 					
 					<form method="post" action="cgi-bin/show_params.cgi" id="inPersonAdd" name="inPersonAdd"> 
 						<span id ="inPersonAdded"></span>
-						<p><input type="button" id="moreDst" value="Add Route"><p>
+						<p><input type="button" id="moreDst" value="A Route"><p>
 					</form>
 					
 					<p><button type="submit" name="sendInPerson" id="sendInPerson">Submit</button></p>
