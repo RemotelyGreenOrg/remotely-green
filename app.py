@@ -8,21 +8,8 @@ def hello_world():
 
 @app.route("/calculator")
 def calculator():
-    # Default parameters
-    data = {
-            "remote": {
-                "consumption": "Submit form!",
-                "total_emission_co2": "Submit form!"
-            },
-            "in_person": {
-                "consumption": "Submit form!",
-                "total_emission_co2": "Submit form!"
-            },
-            "difference": "Submit form!"
-        }
-
     # Render template
-    return render_template("remotelyGreen.html", data=data)
+    return render_template("remotelyGreen.html")
 
 @app.route("/calculator/remote")
 def calculatorRemote():
