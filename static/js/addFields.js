@@ -4,16 +4,17 @@ var counterDst = 0;
 
 function moreDevice() {
     counterDevice++;
+    document.getElementById("deviceCount").value = counterDevice;
 
     if (counterDevice == 1) {
-        let initialForm = document.getElementById('remoteMeetingDevices')
+        let initialForm = document.getElementById('remoteMeetingDevices');
         initialForm.style = "display: block"
     } else {
         let newFields = document.getElementById('remoteMeetingDevices').cloneNode(true);
         newFields.style.display = 'block';
         newFields.id = '';
         let newField = newFields.childNodes;
-        newField = newField[4].childNodes;
+        newField = newField[5].childNodes;
 
         for (let i = 3; i < newField.length; i += 2) {
 
@@ -21,10 +22,8 @@ function moreDevice() {
 
             for (let j = 1; j < newFieldOne.length; j += 2) {
                 let theName = newFieldOne[j].name;
-
                 if (theName) {
                     newFieldOne[j].name = theName + counterDevice;
-
                 }
             }
         }
@@ -36,6 +35,7 @@ function moreDevice() {
 
 function moreApp() {
     counterApp++;
+    document.getElementById("appCount").value = counterApp;
 
     if (counterApp == 1) {
         let initialForm = document.getElementById('remoteMeetingApp')
@@ -45,19 +45,15 @@ function moreApp() {
         newFields.style.display = 'block';
         newFields.id = '';
         let newField = newFields.childNodes;
-        newField = newField[4].childNodes;
-        console.log(newField);
+        newField = newField[5].childNodes;
 
         for (let i = 3; i < newField.length; i++) {
 
             let newFieldOne = newField[i].childNodes;
-            console.log(newFieldOne);
             for (let j = 1; j < newFieldOne.length; j++) {
                 let theName = newFieldOne[j].name;
-                console.log(theName);
                 if (theName) {
                     newFieldOne[j].name = theName + counterApp;
-                    console.log(newFieldOne[j].name);
                 }
 
             }
@@ -69,6 +65,7 @@ function moreApp() {
 
 function moreDst() {
     counterDst++;
+    document.getElementById("destinationCount").value = counterDst
 
     if (counterDst == 1) {
         let initialForm = document.getElementById('inPersonMeeting')
@@ -78,9 +75,8 @@ function moreDst() {
         newFields.style.display = 'block';
         newFields.id = '';
         let newField = newFields.childNodes;
-        console.log(newField);
 
-        for (let i = 4; i < newField.length; i += 2) {
+        for (let i = 5; i < newField.length; i += 2) {
 
             let newFieldOne = newField[i].childNodes;
 
