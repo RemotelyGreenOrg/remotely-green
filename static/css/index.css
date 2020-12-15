@@ -32,53 +32,37 @@ p {
 
 select {
 	padding: 10px;
-	margin: 0 10px;
 	border: 2px solid #6a6a6a;
 	box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
 	border-radius:10px;
 
 }
 
-input {
-	padding: 10px;
-	margin: 0 10px;
-	border: 2px solid #6a6a6a;
-	box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
-	border-radius:10px;
 
-}
 
 #app {
 	border-top: 1px dashed;
 	padding: 0 17px;
 }
 
-button {
-
-  /* remove default behavior */
-  appearance:none;
-  -webkit-appearance:none;
-
-  /* custom style */
-  margin-top: 30px;
-  padding:10px;
-  border:none;
-  background-color:#0077b3;
-  color:#fff;
-  font-weight:600;
-  border-radius:5px;
-  width:20%;
-
-}
 
 .input{
-	margin: 0 40px;
+	margin: 5px 40px;
+  width: 40%;
 }
 
 .output{
 	margin: 0 40px;
 }
 
-
-
-
+.description button {
+  border:1px solid #6ab446;
+  background:#6ab446;
+  border-radius: 0;
+  color:#fff;
+}
+.description button:hover {
+  border:1px solid #fff;
+  background:#fff;
+  color:#000;
+}
