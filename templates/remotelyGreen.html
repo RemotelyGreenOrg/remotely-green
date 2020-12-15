@@ -2,10 +2,11 @@
 <html>
 <head>
     <title>Remotely Green</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/index.css') }}>
     <script type="text/javascript" src={{ url_for('static', filename='js/addFields.js') }}></script>
-    
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -17,78 +18,104 @@
         <fieldset>
             <legend><h2>Remote meeting</h2></legend>
 
+            <p>Input your devices and the video conferencing apps you use:</p>
+
             <input class="form-control" name="deviceCount" id="deviceCount" type="hidden" value="0">
             <input name="appCount" id="appCount" type="hidden" value="0">
 
-            <div class="remoteMeetingDevices" id="remoteMeetingDevices" style="display :none">
-                <br>
-                <input type="button" class="form-control" id="removeDeviceButton" value="Remove Device"
-                        onclick="this.parentNode.parentNode.removeChild(this.parentNode);"><i class="fas fa-minus"></i>
-                <fieldset>
-                    <legend><h3>Device</h3></legend>
-                    <p>Type of device
-                        <select class="form-control" name="typeDevice" size=1 id="typeDeviceId">
-                            <option value="laptop" id="laptop">laptop</option>
-                            <option value="persComputer" id="persComputer">personal computer</option>
-                            <option value="highCODEC" id="highCODEC">high CODEC</option>
-                            <option value="lowCODEC" id="lowCODEC">low CODEC</option>
-                            <option value="projector" id="projector">projector</option>
-                            <option value="router" id="router">router</option>
-                            <option value="camera" id="camera">camera</option>
-                            <option value="speaker" id="speaker">speaker</option>
-                            <option value="micro" id="micro">microphone</option>
-                        </select>
-                    </p>
+            <div class="row">
 
-                    <p>Model<input class="form-control col-xs-3" type="text" name="model" id="model" placeholder="model"></p>
-                    <p>Size of screen (diagonal) <input class="form-control" type="number" min="0" name="inch" id="inch" placeholder="inch">
-                    </p>
+                <div class="column">
+                    <div class="remoteMeetingDevices" id="remoteMeetingDevices" style="display :none">
+                        <br>
+                        <input type="button" class="form-control" id="removeDeviceButton" value="Remove Device"
+                               onclick="this.parentNode.parentNode.removeChild(this.parentNode);"><i
+                            class="fas fa-minus"></i>
+                        <fieldset>
+                            <legend><h3>Device</h3></legend>
+                            <p>Type of device
+                                <select class="form-control" name="typeDevice" size=1 id="typeDeviceId">
+                                    <option value="laptop" id="laptop">laptop</option>
+                                    <option value="persComputer" id="persComputer">personal computer</option>
+                                    <option value="highCODEC" id="highCODEC">high CODEC</option>
+                                    <option value="lowCODEC" id="lowCODEC">low CODEC</option>
+                                    <option value="projector" id="projector">projector</option>
+                                    <option value="router" id="router">router</option>
+                                    <option value="camera" id="camera">camera</option>
+                                    <option value="speaker" id="speaker">speaker</option>
+                                    <option value="micro" id="micro">microphone</option>
+                                </select>
+                            </p>
 
-                    <p>Format of screen
-                        <input style="width: 40%;" class="form-control" type="number" min="0" name="long" id="long" placeholder="long">/
-                        <input style="width: 40%;" class="form-control" type="number" min="0" name="large" id="large" placeholder="large">
-                    </p>
+                            <p>Model<input class="form-control col-xs-3" type="text" name="model" id="model"
+                                           placeholder="model"></p>
+                            <p>Size of screen (diagonal) <input class="form-control" type="number" min="0" name="inch"
+                                                                id="inch" placeholder="inch">
+                            </p>
 
-                    <p>Date of purchase <input class="form-control" type="date" id="date" name="datePurchase"></p>
-                </fieldset>
+                            <p>Format of screen
+                                <input style="width: 40%;" class="form-control" type="number" min="0" name="long"
+                                       id="long" placeholder="long">/
+                                <input style="width: 40%;" class="form-control" type="number" min="0" name="large"
+                                       id="large" placeholder="large">
+                            </p>
+
+                            <p>Date of purchase <input class="form-control" type="date" id="date" name="datePurchase">
+                            </p>
+                        </fieldset>
+                    </div>
+
+                    <form method="post" action="cgi-bin/show_params.cgi" id="addingDevices" name="addingDevices">
+                        <span id="addedDevice"></span>
+                        <p><input class="form-control" type="button" id="moreDevice" value="Add Device"></p>
+                    </form>
+                </div>
+
+                <div class="column">
+                    <div class="remoteMeetingApp" id="remoteMeetingApp" style="display : none">
+                        <br>
+                        <input type="button" class="form-control" id="removeAppButton" value="Remove App"
+                               onclick="this.parentNode.parentNode.removeChild(this.parentNode);"><i
+                            class="fas fa-minus"></i>
+                        <fieldset>
+                            <legend><h3>App</h3></legend>
+
+                            <p>Name of the app <input class="form-control" type="text" name="app_name" id="app_name"
+                                                      placeholder="App name">
+                            <p>
+
+                            <p>Duration call <input class="form-control" type="time" step="1" name="duration"
+                                                    id="duration"></p>
+
+                            <p>Location when remote meeting<br><br>
+                                <input class="form-control" type="text" name="nbAddress" id="nbAddress" placeholder="Nb"
+                                       size="5">
+                                <input class="form-control" type="text" name="street" id="street" placeholder="Street"
+                                       size="30">
+                                <input class="form-control" type="text" name="postalCode" id="postalCode"
+                                       placeholder="Postal Code" size="10">
+                                <input class="form-control" type="text" name="city" id="city" placeholder="City"
+                                       size="15">
+                                <input class="form-control" type="text" name="country" id="country"
+                                       placeholder="Country">
+                            </p>
+                        </fieldset>
+                    </div>
+
+                    <form method="post" action="cgi-bin/show_params.cgi" id="addingApp" name="addingApp">
+                        <span id="addedApp"></span>
+                        <p><input class="form-control" type="button" id="moreApp" value="Add App">
+                        <p>
+                    </form>
+                </div>
             </div>
 
-            <form method="post" action="cgi-bin/show_params.cgi" id="addingDevices" name="addingDevices">
-                <span id="addedDevice"></span>
-                <p><input class="form-control" type="button" id="moreDevice" value="Add Device"></p>
-            </form>
+            <br>
+            <button class="removeDeviceButton, btn btn-outline-secondary btn-lg" type="submit"
+                    id="sendRemote">Submit
+            </button>
+            <br>
 
-            <div class="remoteMeetingApp" id="remoteMeetingApp" style="display : none">
-                <br>
-                <input  type="button" class ="form-control" id="removeAppButton" value="Remove App"
-                        onclick="this.parentNode.parentNode.removeChild(this.parentNode);"><i class="fas fa-minus"></i>
-                <fieldset>
-                    <legend><h3>App</h3></legend>
-
-                    <p>Name of the app <input class="form-control" type="text" name="app_name" id="app_name" placeholder="App name">
-                    <p>
-
-                    <p>Duration call <input class="form-control" type="time" step="1" name="duration" id="duration"></p>
-
-                    <p>Location when remote meeting<br><br>
-                        <input class="form-control" type="text" name="nbAddress" id="nbAddress" placeholder="Nb" size="5">
-                        <input class="form-control" type="text" name="street" id="street" placeholder="Street" size="30">
-                        <input class="form-control" type="text" name="postalCode" id="postalCode" placeholder="Postal Code" size="10">
-                        <input class="form-control" type="text" name="city" id="city" placeholder="City" size="15">
-                        <input class="form-control" type="text" name="country" id="country" placeholder="Country">
-                    </p>
-                </fieldset>
-            </div>
-
-            <form method="post" action="cgi-bin/show_params.cgi" id="addingApp" name="addingApp">
-                <span id="addedApp"></span>
-                <p><input class="form-control" type="button" id="moreApp" value="Add App">
-                <p>
-            </form>
-
-            <p>
-                <button class = "removeDeviceButton, btn btn-outline-secondary btn-lg"type="submit" id="sendRemote">Submit</button>
-            </p>
         </fieldset>
     </form>
     <br>
@@ -101,19 +128,26 @@
 
                 <br>
                 <input class="form-control" type="button" id="removeinPersonButton" value="Remove Route"
-                        onclick="this.parentNode.parentNode.removeChild(this.parentNode);"><i class="fas fa-minus"></i>
+                       onclick="this.parentNode.parentNode.removeChild(this.parentNode);"><i class="fas fa-minus"></i>
                 <p>Start Location<br><br>
-                    <input class="form-control" type="text" name="nbAddressStart" id="nbAddressStart" placeholder="Nb" size="5">
-                    <input class="form-control" type="text" name="streetStart" id="streetStart" placeholder="Street" size="30">
-                    <input class="form-control" type="text" name="postalCodeStart" id="postalCodeStart" placeholder="Postal Code" size="10">
-                    <input class="form-control" type="text" name="cityStart" id="cityStart" placeholder="City" size="15">
+                    <input class="form-control" type="text" name="nbAddressStart" id="nbAddressStart" placeholder="Nb"
+                           size="5">
+                    <input class="form-control" type="text" name="streetStart" id="streetStart" placeholder="Street"
+                           size="30">
+                    <input class="form-control" type="text" name="postalCodeStart" id="postalCodeStart"
+                           placeholder="Postal Code" size="10">
+                    <input class="form-control" type="text" name="cityStart" id="cityStart" placeholder="City"
+                           size="15">
                     <input class="form-control" type="text" name="countryStart" id="countryStart" placeholder="Country">
                 </p>
 
                 <p>Destination Location<br><br>
-                    <input class="form-control" type="text" name="nbAddressDst" id="nbAddressDst" placeholder="Nb" size="5">
-                    <input class="form-control" type="text" name="streetDst" id="streetDst" placeholder="Street" size="30">
-                    <input class="form-control" type="text" name="postalCodeDst" id="postalCodeDst" placeholder="Postal Code" size="10">
+                    <input class="form-control" type="text" name="nbAddressDst" id="nbAddressDst" placeholder="Nb"
+                           size="5">
+                    <input class="form-control" type="text" name="streetDst" id="streetDst" placeholder="Street"
+                           size="30">
+                    <input class="form-control" type="text" name="postalCodeDst" id="postalCodeDst"
+                           placeholder="Postal Code" size="10">
                     <input class="form-control" type="text" name="cityDst" id="cityDst" placeholder="City" size="15">
                     <input class="form-control" type="text" name="countryDst" id="countryDst" placeholder="Country">
                 </p>
@@ -141,15 +175,16 @@
                 <p>
             </form>
 
-            <p>
-                <button class="btn btn-outline-secondary btn-lg" type="submit" name="sendInPerson" id="sendInPerson">Submit</button>
-            </p>
+            <br>
+            <button class="btn btn-outline-secondary btn-lg" type="submit" name="sendInPerson" id="sendInPerson">
+                Submit
+            </button>
+            <br>
 
             <input name="destinationCount" id="destinationCount" type="hidden" value="0">
         </fieldset>
     </form>
 </div>
-<br>
 <hr>
 
 {% if data %}
@@ -186,7 +221,11 @@
     </div>
 {% endif %}
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 </body>
 </html>

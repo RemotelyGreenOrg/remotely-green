@@ -1,22 +1,26 @@
 
-body{
-    background: #dfdfdf;
+body {
+    background: #f9f9f9;
+    padding: 5%;
 }
 
 h1 {
     font-weight: 500;
     font-size: 50px;
-    text-align: center;
+    font-family: "Helvetica Neue";
+    text-align: left;
+    padding-bottom: 5%;
 }
 
 h2 {
-    font-weight: 100;
+    font-weight: 200;
     font-family: "Helvetica Neue";
     font-size: 30px;
+    text-align: center;
     display: inline-block;
-    border: 2px solid #666666;
-	padding: 2px 15px; 
-	background-color: #bfbfbf;   
+    border: 1px solid #000000;
+    padding: 5px 15px;
+    margin-bottom: 25px;
 }
 
 h3 {
@@ -27,42 +31,54 @@ h3 {
 }
 
 p {
-	font-size: 18px;
+    font-family: "Helvetica Neue";
+    font-weight: 400;
+    font-size: 18px;
 }
 
 select {
-	padding: 10px;
-	border: 2px solid #6a6a6a;
-	box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
-	border-radius:10px;
-
+    padding: 10px;
+    border: 2px solid #6a6a6a;
+    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+    border-radius: 10px;
 }
-
-
 
 #app {
-	border-top: 1px dashed;
-	padding: 0 17px;
+    border-top: 1px dashed;
+    padding: 0 17px;
 }
 
 
-.input{
-	margin: 5px 40px;
-  width: 40%;
+.input {
+    margin-bottom: 5%;
+    width: 100%;
 }
 
-.output{
-	margin: 0 40px;
+.output {
+    margin-bottom: 5%;
+    width: 100%;
 }
 
 .description button {
-  border:1px solid #6ab446;
-  background:#6ab446;
-  border-radius: 0;
-  color:#fff;
+    border: 1px solid #6ab446;
+    background: #6ab446;
+    border-radius: 0;
+    color: #fff;
 }
+
 .description button:hover {
-  border:1px solid #fff;
-  background:#fff;
-  color:#000;
+    border: 1px solid #fff;
+    background: #fff;
+    color: #000;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
