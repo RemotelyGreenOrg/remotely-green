@@ -81,6 +81,56 @@ function moreDst() {
 	insertHere.parentNode.insertBefore(newFields,insertHere);
 }
 
+function notDisplayScreen(typeDevice){
+	console.log("hola");
+	let screenOrNot = document.getElementsByTagName('typeDevice').value;
+	var classeToDisplay;
+	switch(screenOrNot){
+		case "laptop":
+			classeToDisplay = document.getElementsByClassName('screenField');
+			classeToDisplay.display = none;
+			break;
+		case "persComputer":
+			classeToDisplay = document.getElementsByClassName('screenField');
+			classeToDisplay.display = none;
+			break;
+		case "highCODEC":
+			classeToDisplay = document.getElementsByClassName('screenField');
+			classeToDisplay.display = none;
+			break;
+		case "lowCODEC":
+			classeToDisplay = document.getElementsByClassName('screenField');
+			classeToDisplay.display = none;
+			break;
+		case "projector":
+			classeToDisplay = document.getElementsByClassName('screenField');
+			classeToDisplay.display = none;
+			break;
+		case "router":
+			classeToDisplay = document.getElementsByClassName('screenField');
+			classeToDisplay.display = none;
+			break;
+		case "camera":
+			classeToDisplay = document.getElementsByClassName('screenField');
+			classeToDisplay.display = none;
+			break;
+		case "speaker":
+			classeToDisplay = document.getElementsByClassName('screenField');
+			classeToDisplay.display = none;
+			break;
+		case "micro":
+			classeToDisplay = document.getElementsByClassName('screenField');
+			classeToDisplay.display = none;
+			break;
+		case "screen":
+			classeToDisplay = document.getElementsByClassName('screenField');
+			classeToDisplay.display = inline-block;
+			break;
+		
+	}
+	
+}
+
 window.onload = function(){
 	document.getElementById('moreDevice').onclick = moreDevice;
 	document.getElementById('moreApp').onclick = moreApp;

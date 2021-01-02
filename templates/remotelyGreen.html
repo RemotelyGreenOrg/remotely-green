@@ -13,11 +13,11 @@
 					<legend><h2>Remote meeting</h2></legend>
 					
 					<div class="remoteMeetingDevices" id="remoteMeetingDevices" style="display :none">
-						<br><button class="removeDeviceButton" id="removeDeviceButton" value="Remove Device" onclick="this.parentNode.parentNode.removeChild(this.parentNode);"><i class="fas fa-minus"></i></button>
+						<br><input type="button" class="removeDeviceButton" id="removeDeviceButton" value="Remove Device" onclick="this.parentNode.parentNode.removeChild(this.parentNode);">
 						<fieldset>
 							<legend><h3>Device</h3></legend>
 							<p>Type of device 
-								<select name="typeDevice" size=1 id="typeDeviceId">
+								<select name="typeDevice" size=1 id="typeDeviceId" onchange="notDisplayScreen(this)">
 									<option value="laptop" id="laptop">laptop</option>
 									<option value="persComputer" id="persComputer">personal computer</option>
 									<option value="highCODEC" id="highCODEC">high CODEC</option>
@@ -27,17 +27,21 @@
 									<option value="camera" id="camera">camera</option>
 									<option value="speaker" id="speaker">speaker</option>
 									<option value="micro" id="micro">microphone</option>
+									<option value="screen" id="screen">screen</option>
 								</select>
 							</p>
 						
 							<p>Model<input type="text" name="model" id="model" placeholder="model"></p>
-							<p>Size of screen (diagonal) <input type="number" min="0" name="inch" id="inch" placeholder="inch"></p>
-						
-							<p>Format of screen 
-								<input type="number" min="0" name="long" id="long" placeholder="long">/
-								<input type="number" min="0" name="large" id="large" placeholder="large">
-							</p>
-						
+							
+							<div class="screenField" style="display : none">
+								<p>Size of screen (diagonal) <input type="number" min="0" name="inch" id="inch" placeholder="inch"></p>
+							
+								<p>Format of screen 
+									<input type="number" min="0" name="long" id="long" placeholder="long">/
+									<input type="number" min="0" name="large" id="large" placeholder="large">
+								</p>
+							</div>
+							
 							<p>Date of purchase <input type="date" id="date" name="datePurchase"></p>
 						</fieldset>
 					</div>
@@ -48,7 +52,7 @@
 					</form>
 					
 					<div class="remoteMeetingApp" id="remoteMeetingApp" style="display : none">
-						<br><button id="removeAppButton" value="Remove App" onclick="this.parentNode.parentNode.removeChild(this.parentNode);"><i class="fas fa-minus"></i></button>
+						<br><input type="button" id="removeAppButton" value="Remove App" onclick="this.parentNode.parentNode.removeChild(this.parentNode);">
 						<fieldset>
 							<legend><h3>App</h3></legend>
 							<p>Name of the app <input type="text" name="app_name" id="app_name" placeholder="App name"><p>
@@ -79,7 +83,7 @@
 				<fieldset>
 					<legend><h2>Meeting in person</h2></legend>
 					<div class="inPersonMeeting" id="inPersonMeeting" style="display : none">
-					<br><button id="removeinPersonButton" value="Remove Route" onclick="this.parentNode.parentNode.removeChild(this.parentNode);"><i class="fas fa-minus"></i></button>
+					<br><input type="button" id="removeinPersonButton" value="Remove Route" onclick="this.parentNode.parentNode.removeChild(this.parentNode);">
 					<p>Start Location<br><br>
 						<input type="text" name="nbAddressStart" id="nbAddressStart" placeholder="Nb" size="5">
 						<input type="text" name="streetStart" id="streetStart" placeholder="Street" size="30">
