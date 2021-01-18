@@ -93,48 +93,8 @@ function moreDst() {
     }
 }
 
-function notDisplayScreen(typeDevice){
-	let number = typeDevice.name[typeDevice.name.length-1];
-	let screenOrNot = typeDevice.value;
-	let classeToDisplay;
-	switch(screenOrNot){
-		case "laptop":
-			classeToDisplay = document.querySelectorAll(".screenField")[number].style.display = "none";
-			break;
-		case "persComputer":
-			classeToDisplay = document.querySelectorAll(".screenField")[number].style.display = "none";
-			break;
-		case "highCODEC":
-			classeToDisplay = document.querySelectorAll(".screenField")[number].style.display = "none";
-			break;
-		case "lowCODEC":
-			classeToDisplay = document.querySelectorAll(".screenField")[number].style.display = "none";
-			break;
-		case "projector":
-			classeToDisplay = document.querySelectorAll(".screenField")[number].style.display = "none";
-			break;
-		case "router":
-			classeToDisplay = document.querySelectorAll(".screenField")[number].style.display = "none";
-			break;
-		case "camera":
-			classeToDisplay = document.querySelectorAll(".screenField")[number].style.display = "none";
-			break;
-		case "speaker":
-			classeToDisplay = document.querySelectorAll(".screenField")[number].style.display = "none";
-			break;
-		case "micro":
-			classeToDisplay = document.querySelectorAll(".screenField")[number].style.display = "none";
-			break;
-		case "screen":
-			classeToDisplay = document.querySelectorAll(".screenField")[number].style.display = "inline-block";
-			break;
-		
-	}
-	
-}
-
-window.onload = function(){
-	document.getElementById('moreDevice').onclick = moreDevice;
-	document.getElementById('moreApp').onclick = moreApp;
-	document.getElementById('moreDst').onclick = moreDst;
+window.onload = function () {
+    document.getElementById('moreDevice').onclick = moreDevice;
+    document.getElementById('moreApp').onclick = moreApp;
+    document.getElementById('moreDst').onclick = moreDst;
 }
