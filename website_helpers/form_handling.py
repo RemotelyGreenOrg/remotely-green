@@ -1,4 +1,5 @@
 from website_helpers.models import CalculatorResponse, Device, App, Route
+from website_helpers import calculator
 
 def handleRemoteForm(requestArgs):
     # Parameters
@@ -13,9 +14,15 @@ def handleRemoteForm(requestArgs):
     for appIndex in range(1, app_count+1, 1):
         apps.append(App(requestArgs, appIndex))
 
-    # Pass data to model
     # FIXME: - Mocked
-    model_response = CalculatorResponse("TBI: Consumption Category", "TBI: CO2 Total emissions", "TBI: Consumption Category", "TBI: CO2 Total emissions", "TBI: Difference CO2 emissions")
+
+    devices, bandwidth = calculator.create_model(devices)
+
+    remote_emissions = calculator.return_data(devices, bandwidth)
+
+    remote_category = calculator.category(remote_emissions)
+
+    model_response = CalculatorResponse(remote_category,remote_emissions, "TBI: Consumption Category", "TBI: CO2 Total emissions", "TBI: Difference CO2 emissions")
 
     return model_response.json()
 
